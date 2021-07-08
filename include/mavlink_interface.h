@@ -42,7 +42,6 @@
 #include <random>
 #include <stdio.h>
 #include <math.h>
-#include <cstdint>
 #include <cstdlib>
 #include <string>
 #include <sys/socket.h>
@@ -107,7 +106,7 @@ namespace SensorData {
     };
 
     struct Gps {
-        uint64_t time_utc_usec;
+        int time_utc_usec;
         int fix_type;
         double latitude_deg;
         double longitude_deg;
@@ -152,8 +151,8 @@ public:
     void open();
     void close();
     void Load();
-    void SendSensorMessages(const uint64_t time_usec);
-    void SendSensorMessages(const uint64_t time_usec, HILData &hil_data);
+    void SendSensorMessages(const int &time_usec);
+    void SendSensorMessages(const int &time_usec, HILData &hil_data);
     void SendGpsMessages(const SensorData::Gps &data);
     void UpdateBarometer(const SensorData::Barometer &data, const int id = 0);
     void UpdateAirspeed(const SensorData::Airspeed &data, const int id = 0);

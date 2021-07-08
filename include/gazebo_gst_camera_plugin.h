@@ -85,8 +85,11 @@ class GAZEBO_VISIBLE GstCameraPlugin : public SensorPlugin
   private: const std::string mTopicName = "~/video_stream";
   private: bool mIsActive;
 
-  GMainLoop *gst_loop;
-  GstElement *source;
+  GstBuffer *frameBuffer;
+  std::mutex frameBufferMutex;
+  GMainLoop *mainLoop;
+  GstClockTime gstTimestamp;
+
 };
 
 } /* namespace gazebo */
